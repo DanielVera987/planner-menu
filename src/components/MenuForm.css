@@ -1,0 +1,359 @@
+/* Week Grid */
+.menu-form {
+  width: 100%;
+}
+
+.week-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Header */
+.grid-header {
+  display: grid;
+  grid-template-columns: 140px repeat(7, 1fr);
+  gap: 2px;
+}
+
+.grid-cell {
+  background: var(--color-bg-secondary);
+  padding: 0.75rem;
+}
+
+.header-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.header-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+}
+
+.day-emoji {
+  font-size: 1.25rem;
+}
+
+.day-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.day-short {
+  display: none;
+}
+
+/* Rows */
+.grid-row {
+  display: grid;
+  grid-template-columns: 140px repeat(7, 1fr);
+  gap: 2px;
+}
+
+.meal-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background: var(--color-bg-card);
+  border-right: 3px solid var(--color-accent);
+}
+
+.meal-icon {
+  font-size: 1.5rem;
+}
+
+.meal-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.optional-tag {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* Meal Cells */
+.meal-cell {
+  position: relative;
+  background: var(--color-bg-card);
+  padding: 0.5rem;
+}
+
+.meal-input {
+  width: 100%;
+  height: 100%;
+  min-height: 60px;
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.meal-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+.meal-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-bg-secondary);
+}
+
+.meal-input:not(:placeholder-shown) {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-border);
+}
+
+/* Copy Button */
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+.meal-cell:hover .copy-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.copy-btn:hover {
+  background: var(--color-accent-light);
+  transform: scale(1.1);
+}
+
+/* Summary */
+.summary {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-icon {
+  font-size: 1rem;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-icon {
+  font-size: 1.1rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.stat-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg-card);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.stat-count.complete {
+  color: var(--color-success);
+  background: rgba(23, 191, 99, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .grid-header,
+  .grid-row {
+    grid-template-columns: 100px repeat(7, 1fr);
+  }
+  
+  .meal-icon {
+    font-size: 1.25rem;
+  }
+  
+  .meal-name {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .day-name {
+    display: none;
+  }
+  
+  .day-short {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .grid-header,
+  .grid-row {
+    grid-template-columns: 80px repeat(7, 1fr);
+  }
+  
+  .meal-label {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .meal-icon {
+    font-size: 1rem;
+  }
+  
+  .meal-name {
+    font-size: 0.6rem;
+  }
+  
+  .meal-input {
+    font-size: 0.75rem;
+    padding: 0.4rem;
+    min-height: 50px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Vista vertical para móviles */
+  .week-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: transparent;
+  }
+  
+  .grid-header {
+    display: none;
+  }
+  
+  .grid-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+  }
+  
+  .meal-label {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+  }
+  
+  .meal-icon {
+    font-size: 1.5rem;
+  }
+  
+  .meal-name {
+    font-size: 1rem;
+    flex: 1;
+    text-align: left;
+  }
+  
+  .meal-cell {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    background: transparent;
+  }
+  
+  .meal-cell::before {
+    content: attr(data-day);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+  }
+  
+  .meal-input {
+    min-height: 40px;
+    flex: 1;
+  }
+  
+  .copy-btn {
+    position: static;
+    opacity: 1;
+    transform: scale(1);
+    flex-shrink: 0;
+  }
+  
+  .summary-stats {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
