@@ -26,6 +26,9 @@ jobs:
       - name: Version pnpm
         run: pnpm -v
 
+      - name: Install node_modules
+        run: pnpm install
+
       - name: Build Vite
         run: pnpm run build
 
