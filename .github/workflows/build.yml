@@ -26,3 +26,6 @@ jobs:
       - name: Version pnpm
         run: pnpm -v
 
+      - name: Build Vite
+        run: pnpm run build
+
